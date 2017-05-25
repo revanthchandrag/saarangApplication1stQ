@@ -1,0 +1,86 @@
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Registration Form (FOR SAARANG EVENTS)</title>
+    <link rel='stylesheet' href='style.css' type='text/css' media='all' />
+  </head>
+  <body ng-app="app">
+  <h3 align="center">
+  	Registration Form where you register for any event in Gaming Department
+  </h3>
+
+    <form name="exampleForm" class="elegant-aero">
+
+    <label>Choose any one of the events listed that you want to register for</label>
+      <select>
+      <option value="Mobile Gaming Tournament">Mobile Gaming Tournament</option>
+      <option value="DOTA 2 Tournament">DOTA 2 Tournament</option>
+      <option value="Gaming Lounge">Gaming Lounge</option>
+      <option value="VR Zone">VR Zone</option>
+      </select>
+      
+      <br>
+      <br>
+
+   	  <label>First Name:</label>
+      <input type="text" name="userFirstName" ng-model="firstName" ng-pattern="/^[a-zA-Z\s]*$/" required />
+      <div ng-messages="exampleForm.userFirstName.$error">
+        <div ng-message="pattern">First Name should contain only Alphabets and blankspace!</div>
+        <!-- <div ng-message="required">This field is required</div> -->
+      </div>
+
+      <label>Last Name:</label>
+      <input type="text" name="userLastName" ng-model="lastName" ng-pattern="/^[a-zA-Z]*$/" required />
+      <div ng-messages="exampleForm.userLastName.$error">
+      <div ng-message="pattern">Last Name should contain only Alphabets!</div>
+        <!-- <div ng-message="required">This field is required</div> -->
+      </div>
+
+      <label>Email Address:</label>
+      <input type="email" name="userEmail" ng-model="email" placeholder="ex-abc@d.com" required />
+      <div ng-messages="exampleForm.userEmail.$error">
+        <!-- <div ng-message="required">This field is required</div> -->
+        <div ng-message="email">Your email address is invalid!</div>
+      </div>
+
+      <label>Phone Number:</label>
+      <input type="text" name="userPhoneNumber" ng-model="phoneNumber" ng-pattern="/^(\+\d{1,3}[- ]?)?\d{10}$/" placeholder="Must be 10 digits(only numbers)" required/>
+      <div ng-messages="exampleForm.userPhoneNumber.$error">
+        <!-- <div ng-message="required">This field is required</div> -->
+        <div ng-message="pattern">Must be a valid 10 digit phone number!</div>
+      </div>
+
+      <label>What interests you in this event?</label>
+      <textarea type="text" name="userMessage" class="form-control" rows="4" ng-model="message" ng-minlength="5" ng-maxlength="1000" placeholder="Must be 5-1000 charecters"   required></textarea>
+      <div ng-messages="exampleForm.userMessage.$error">
+        <!-- <div ng-message="required">This field is required</div> -->
+        <div ng-message="minlength">Message must be over 5 characters!</div>
+        <div ng-message="maxlength">Message must not exceed 1000 characters</div>
+      </div>
+      <br>
+      <p><b>Note:</b> In order to submit application,all inputs need to be entered in valid format.</p>
+       <button ng-disabled="exampleForm.$invalid" onclick="myFunction2()">Submit</button> <p id="demo"></p>
+    </form>
+    <script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.names = ["Mobile Gaming Tournament", "DOTA 2 Tournament", "Gaming Lounge","VR Zone","CS:GO Tournament","Call of Duty (MW) Tournament","FIFa"];
+});
+</script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-messages.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+function myFunction() {
+    document.body.style.backgroundColor = "#f3f3f3";
+    document.body.style.backgroundImage = "url('/home/revanthchandrag/Desktop/Saarang_app/saarang.png')";
+
+}
+
+function myFunction2() {
+    document.getElementById("demo").innerHTML = "Submitted successfully!!!!!!!<br> Thank you For registering.";
+}
+</script>
+  </body> 
+</html>
